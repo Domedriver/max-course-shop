@@ -9,15 +9,19 @@ const router = express.Router()
 const products = [];
 
 router.get('/add-product', (req, res, next) => {        
-    res.render('add-product', {docTitle: 'The Pug Add Product Page', path: '/admin/add-product'})
+    res.render('add-product', {
+        docTitle: 'The Pug Add Product Page', 
+        path: '/admin/add-product',
+        activeAddProduct: true,
+        formsCSS: true,
+        productCSS: true
+        })
 })
 
 router.post('/add-product', (req, res) => {
-    products.push({title: req.body.title})
-    console.log('admin.js ', req.body)
+    products.push({title: req.body.title})    
     res.redirect('/')
 })
-
 
 exports.routes = router;
 exports.products = products;
