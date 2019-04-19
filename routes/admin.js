@@ -1,26 +1,22 @@
-const path = require('path')
-
 const express = require('express')
-
-const rootDir = require('../util/path')
 
 const router = express.Router()
 
 const products = [];
 
-router.get('/add-product', (req, res, next) => {        
-    res.render('add-product', {docTitle: 'The Pug Add Product Page', path: '/admin/add-product'})
+router.get('/add-product', (req, res, next) => {
+    res.render('add-product', {
+        docTitle: 'The Pug Add Product Page',
+        path: '/admin/add-product'
+    })
 })
 
 router.post('/add-product', (req, res) => {
-    products.push({title: req.body.title})
-    console.log('admin.js ', req.body)
+    products.push({
+        title: req.body.title
+    })
     res.redirect('/')
 })
 
-
 exports.routes = router;
 exports.products = products;
-
-// Used below export when just exporting router
-// module.exports = router
